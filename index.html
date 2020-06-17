@@ -14,7 +14,7 @@
         <a class="navbar-brand" href="#">Wallet App</a>
 
         <!-- Wallet Button -->
-        <div id="wallet-btns" class="btn-group">
+        <div id="wallet-btns" class="btn-group d-none">
             <!-- Selected Button -->
             <button id="selected-wallet-btn" type="button" class="btn btn-info">Wallet Name</button>
 
@@ -24,8 +24,7 @@
             </button>
 
             <!-- Wallets List -->
-            <div class="dropdown-menu dropdown-menu-right">
-                <button class="dropdown-item">Wallet 1</button>
+            <div id="wallet-list" class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item" data-toggle="modal" data-target="#wallet-form-modal">+ Create new
                     wallet</button>
@@ -35,31 +34,50 @@
 
 
     <div class="container">
-        <div id="wallet-view">
+        <div id="wallet-view" class="d-none">
             <h1 id="balance-display" class="mt-5"></h1>
             <!-- Transaction Form -->
-            <form class="form-group row mt-5">
-                <label for="transaction-input" class="col-md-12 col-form-label">Make a transaction:</label>
-                <div class="input-group col-md-3">
-                    <input type="number" id="transaction-input" class="form-control" placeholder="Enter an amount"
-                        aria-label="Amount (with dot and two decimal places)">
-                    <div class="input-group-append">
-                        <span class="input-group-text">$</span>
-                        <span class="input-group-text">0.00</span>
+            <form id="transaction-form" class="form-group mt-5">
+                <div class="row">
+                    <label for="transaction-input" class="col-4 col-form-label">Make a transaction:</label>
+                </div>
+                <div class="row">
+                    <div class="input-group col-4">
+                        <input type="number" id="transaction-input" class="form-control" placeholder="Enter an amount"
+                            aria-label="Amount (with dot and two decimal places)">
+                        <div class="input-group-append">
+                            <span id="currency-span" class="input-group-text">$</span>
+                            <span id="balance-span" class="input-group-text">0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="btn-group btn-group-toggle col-4" data-toggle="buttons">
+                        <label class="btn btn-outline-success active">
+                            <input type="radio" name="trans-type" id="income-radio" />
+                            Income
+                        </label>
+                        <label class="btn btn-outline-danger">
+                            <input type="radio" name="trans-type" id="expense-radio" /> Expense
+                        </label>
                     </div>
                 </div>
-                <div class="btn-group btn-group-toggle col-md-3 col-sm-2" data-toggle="buttons">
-                    <label class="btn btn-outline-success active">
-                        <input type="radio" name="trans-type" id="income-radio" checked />
-                        Income
-                    </label>
-                    <label class="btn btn-outline-danger">
-                        <input type="radio" name="trans-type" id="expense-radio" /> Expense
-                    </label>
+
+                <div class="row">
+                    <label for="note-input" class="col-4 col-form-label">Transaction Notes:</label>
+                    <label for="tags-input" class="col-4 col-form-label">Transaction tags:</label>
                 </div>
-                <button type="submit" class="btn btn-secondary col-md-3 col-sm-2">
-                    Add Transaction
-                </button>
+                <div class="row">
+                    <div class="input-group col-4">
+                        <input type="text" id="note-input" class="form-control" placeholder="Transaction Notes"
+                            aria-label="Notes about the transactions">
+                    </div>
+                    <div class="input-group col-4">
+                        <input type="text" id="tags-input" class="form-control"
+                            placeholder="Transaction tags (split tags by comma)" aria-label="tags">
+                    </div>
+
+                    <input type="submit" value="Add Transaction" class="btn btn-secondary col-4">
+                </div>
             </form>
 
             <!-- Transaction List -->
@@ -68,7 +86,7 @@
 
         </div>
         <!-- No Wallet View -->
-        <div id="no-wallet-view" class="text-center d-none m-3">
+        <div id="no-wallet-view" class="text-center m-3">
             <img class="mb-5" style="width: 25%;" src="https://cdn.onlinewebfonts.com/svg/img_290493.png"
                 alt="no wallet">
             <h3>Ooops!</h3>
@@ -131,7 +149,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="create-wallet-btn" type="button" class="btn btn-info">Create Wallet</button>
+                    <button id="create-wallet-btn" type="button" data-dismiss="modal" class="btn btn-info">Create
+                        Wallet</button>
                 </div>
             </div>
         </div>
@@ -141,13 +160,13 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="index.js"></script>
 </body>
 
