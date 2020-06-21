@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
-import { StateContext } from "../State";
+import React from "react";
 import { Button } from "react-bootstrap";
 
-export default function NoWalletView(props) {
-  const state = useContext(StateContext);
+export default function NoWalletView({ toggleModal }) {
   return (
     <div className="text-center m-3">
       <img
@@ -14,7 +12,7 @@ export default function NoWalletView(props) {
       />
       <h3>Ooops!</h3>
       <p>You have no wallets. Start by creating one</p>
-      <Button variant="info" onClick={() => state.toggleShowModal(true)}>
+      <Button variant="info" onClick={() => toggleModal(true)}>
         Create wallet
       </Button>
     </div>
